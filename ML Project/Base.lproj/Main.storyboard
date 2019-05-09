@@ -98,6 +98,9 @@
                         <viewLayoutGuide key="safeArea" id="V7l-BY-2tb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="eSE-SI-plv"/>
+                    <connections>
+                        <outlet property="uploadButton" destination="wy4-tR-eJx" id="t26-Q4-W89"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oi-Bp-FXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
