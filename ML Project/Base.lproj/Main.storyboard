@@ -77,6 +77,9 @@
                                 <state key="normal" image="Upload Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="uploadButtonTapped:" destination="OlD-RN-s90" eventType="touchUpInside" id="jt5-y4-VSs"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopBanner" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-Yv-YtJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
