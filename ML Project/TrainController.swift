@@ -13,6 +13,7 @@ let imagePicker = UIImagePickerController()
     
 var faceImage: UIImage!
     var faceImageArray: [UIImage] = []
+    var stringArray: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -60,5 +61,10 @@ var faceImage: UIImage!
     }
     @IBAction func trainButtonTapped(_ sender: Any) {
         print("Send photos to server")
+        for image in faceImageArray
+        {
+            let imageData: Data = image.pngData()!
+            stringArray.append(imageData.base64EncodedString())
+        }
     }
 }

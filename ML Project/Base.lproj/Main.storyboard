@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="2704.8000000000002" y="-280.20989505247377"/>
         </scene>
-        <!--Home Controller-->
+        <!--Home-->
         <scene sceneID="FtZ-cL-aHu">
             <objects>
                 <viewController id="OlD-RN-s90" customClass="HomeController" customModule="ML_Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,7 +96,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="V7l-BY-2tb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="eSE-SI-plv"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="eSE-SI-plv"/>
                     <connections>
                         <outlet property="uploadButton" destination="wy4-tR-eJx" id="t26-Q4-W89"/>
                     </connections>

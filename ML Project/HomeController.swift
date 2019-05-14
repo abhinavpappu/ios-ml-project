@@ -17,6 +17,9 @@ import UIKit
 class HomeController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let imagePicker = UIImagePickerController()
+    var myImage: UIImage = UIImage()
+    
+    
 
     @IBOutlet weak var uploadButton: UIButton!
     override func viewDidLoad() {
@@ -48,6 +51,10 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             print ("Picked image")
             imagePicker.dismiss(animated: true) {
+                self.myImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+                let  imageData: Data = self.myImage.pngData()!
+                let strBase64 = imageData.base64EncodedString()
+                
                 
                 
             }
