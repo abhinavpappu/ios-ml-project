@@ -19,6 +19,10 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     let imagePicker = UIImagePickerController()
     var myImage: UIImage = UIImage()
     
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        
+    }
     
 
     @IBOutlet weak var uploadButton: UIButton!
@@ -59,6 +63,8 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 
             }
         }
+        
+        
         alert.addAction(camera)
         alert.addAction(photoLibrary)
         present(alert, animated: true , completion: nil)
