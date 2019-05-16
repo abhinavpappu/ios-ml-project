@@ -16,6 +16,7 @@
 		396863FB2281F4B200A851EA /* ML_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396863FA2281F4B200A851EA /* ML_ProjectUITests.swift */; };
 		AE0B761822834A2A00648E95 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B761722834A2A00648E95 /* HistoryController.swift */; };
 		AE0B761A22834A3800648E95 /* TrainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B761922834A3800648E95 /* TrainController.swift */; };
+		AED8B47D228DD18100A1694F /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED8B47C228DD18100A1694F /* HistoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		396863FC2281F4B200A851EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE0B761722834A2A00648E95 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		AE0B761922834A3800648E95 /* TrainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainController.swift; sourceTree = "<group>"; };
+		AED8B47C228DD18100A1694F /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				396863DC2281F4B100A851EA /* HomeController.swift */,
 				AE0B761922834A3800648E95 /* TrainController.swift */,
 				AE0B761722834A2A00648E95 /* HistoryController.swift */,
+				AED8B47C228DD18100A1694F /* HistoryCell.swift */,
 				396863DE2281F4B100A851EA /* Main.storyboard */,
 				396863E12281F4B200A851EA /* Assets.xcassets */,
 				396863E32281F4B200A851EA /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 				AE0B761822834A2A00648E95 /* HistoryController.swift in Sources */,
 				AE0B761A22834A3800648E95 /* TrainController.swift in Sources */,
 				396863DB2281F4B100A851EA /* AppDelegate.swift in Sources */,
+				AED8B47D228DD18100A1694F /* HistoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

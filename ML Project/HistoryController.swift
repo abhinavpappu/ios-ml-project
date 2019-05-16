@@ -11,7 +11,11 @@ import UIKit
 class HistoryController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var history: [String] = []
+    struct Item {
+        var text:String
+        var image:UIImage
+    }
+    var history: [Item] = []
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,8 +23,9 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         return history.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
-        cell.textLabel?.text = String(history[indexPath.item])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath) as! HistoryCell
+        cell.scoreLabel.text = history[indexPath.item].text
+        cell.imageView.image = history[indexPath.item].image
         return cell
     }
 }
