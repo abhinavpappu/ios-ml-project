@@ -52,6 +52,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageView" destination="qV7-68-82S" id="OkU-Qe-dVa"/>
+                                            <outlet property="myImageView" destination="qV7-68-82S" id="NFW-Os-tD4"/>
                                             <outlet property="scoreLabel" destination="GhC-rz-Roq" id="vP0-tQ-VTz"/>
                                         </connections>
                                     </tableViewCell>

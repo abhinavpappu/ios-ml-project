@@ -9,7 +9,8 @@
 import UIKit
 
 class HistoryCell: UITableViewCell {
-    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var myImageView: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
     override func awakeFromNib() {
