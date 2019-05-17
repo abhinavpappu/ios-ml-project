@@ -64,7 +64,9 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
                 let  imageData: Data = self.myImage.pngData()!
                 let strBase64 = imageData.base64EncodedString()
                 
-                sendRequest(data: strBase64)
+                print(strBase64.count)
+                
+                self.sendRequest(data: strBase64)
                 
             }
         }
@@ -79,6 +81,7 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     }
     
     func sendRequest(data: String) {
+        print("Sending Request")
         let thing = Thing(model: "kdg4zazx77.json", image: data)
         
         guard let uploadData = try? JSONEncoder().encode(thing) else {
