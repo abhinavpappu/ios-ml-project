@@ -25,6 +25,8 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         return history.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let defaults = UserDefaults.standard
+        let newArray = defaults.stringArray(forKey: "images")
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath) as! HistoryCell
         cell.scoreLabel.text = history[indexPath.item].text
         cell.myImageView.image = history[indexPath.item].image

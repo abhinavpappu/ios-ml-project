@@ -21,8 +21,7 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         let defaults = UserDefaults.standard
-        let savedImage = myImage
-        defaults.set(myImage, forKey: "saved image")
+        
     }
     
 

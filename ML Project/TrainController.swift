@@ -67,5 +67,13 @@ var faceImage: UIImage!
             let imageData: Data = image.pngData()!
             stringArray.append(imageData.base64EncodedString())
         }
+        let defaults = UserDefaults.standard
+        defaults.set(stringArray, forKey: "images")
+      
+            
+            
+        }
     }
-}
+    
+    
+
