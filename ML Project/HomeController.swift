@@ -57,19 +57,7 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             self.imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            print ("Picked image")
-            imagePicker.dismiss(animated: true) {
-                self.myImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
-                let  imageData: Data = self.myImage.pngData()!
-                let strBase64 = imageData.base64EncodedString()
-                
-                print(strBase64.count)
-                
-                self.sendRequest(data: strBase64)
-                
-            }
-        }
+        
         
         
         alert.addAction(camera)
@@ -79,38 +67,61 @@ class HomeController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         
             
     }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print ("Picked image")
+        imagePicker.dismiss(animated: true) {
+            print("Hi")
+            self.myImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+            let  imageData: Data = self.myImage.pngData()!
+            let strBase64 = imageData.base64EncodedString()
+            
+            print(strBase64.count)
+            
+            self.sendRequest(data: strBase64)
+            
+        }
+    }
     
     func sendRequest(data: String) {
-        print("Sending Request")
-        let thing = Thing(model: "kdg4zazx77.json", image: data)
-        
-        guard let uploadData = try? JSONEncoder().encode(thing) else {
-            return
-        }
-        
-        let url = URL(string: "http://157.56.176.151:3000/predict")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response, error in
-            if let error = error {
-                print ("error: \(error)")
+        let defaults = UserDefaults.standard
+        if let userString = defaults.string(forKey: "data string") {
+            print("Sending Request")
+            let thing = Thing(model: userString, image: data)
+            
+            guard let uploadData = try? JSONEncoder().encode(thing) else {
                 return
             }
-            guard let response = response as? HTTPURLResponse,
-                (200...299).contains(response.statusCode) else {
-                    print ("server error")
+            
+            let url = URL(string: "http://157.56.176.151:3000/predict")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response, error in
+                if let error = error {
+                    print ("error: \(error)")
                     return
+                }
+                guard let response = response as? HTTPURLResponse,
+                    (200...299).contains(response.statusCode) else {
+                        print ("server error")
+                        return
+                }
+                if let mimeType = response.mimeType,
+                    let data = data,
+                    let dataString = String(data: data, encoding: .utf8) {
+                    print(mimeType)
+                    print ("got data: \(dataString)")
+                    
+                    let alert = UIAlertController(title: "Prediction Complete", message: "distance = \(dataString)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .default))
+                    self.present(alert, animated: true)
+                }
             }
-            if let mimeType = response.mimeType,
-                let data = data,
-                let dataString = String(data: data, encoding: .utf8) {
-                print(mimeType)
-                print ("got data: \(dataString)")
-            }
+            task.resume()
         }
-        task.resume()
+        
+        
     }
     
     

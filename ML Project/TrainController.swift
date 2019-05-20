@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct Thing2 : Codable {
+    let images: [String]
+}
+
 class TrainController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 let imagePicker = UIImagePickerController()
     
@@ -70,10 +74,49 @@ var faceImage: UIImage!
         let defaults = UserDefaults.standard
         defaults.set(stringArray, forKey: "images")
       
-            
-            
-        }
+        sendRequest(data: stringArray)
     }
+    
+    func sendRequest(data: [String]) {
+        print("Sending Request")
+        let thing = Thing2(images: data)
+        
+        guard let uploadData = try? JSONEncoder().encode(thing) else {
+            return
+        }
+        
+        let url = URL(string: "http://157.56.176.151:3000/train")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response, error in
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            guard let response = response as? HTTPURLResponse,
+                (200...299).contains(response.statusCode) else {
+                    print ("server error")
+                    return
+            }
+            if let mimeType = response.mimeType,
+                let data = data,
+                let dataString = String(data: data, encoding: .utf8) {
+                print(mimeType)
+                print ("got data: \(dataString)")
+                let defaults = UserDefaults.standard
+                defaults.set(dataString, forKey: "data string")
+                
+                let alert = UIAlertController(title: "Training Complete", message: "model name = \(dataString)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default))
+                self.present(alert, animated: true)
+                
+            }
+        }
+        task.resume()
+    }
+}
     
     
 
